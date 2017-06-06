@@ -34,7 +34,7 @@ difference = subtraction(num_one, num_two)
 product = multiplication(num_one, num_two)
 quotient = division(num_one, num_two)
 power = exponent(num_one, num_two)
-#print()
+
 print("\nThe sum of %.2lf and %.2lf is %.2lf " % (num_one, num_two, sum))
 print("The difference of %.2lf and %.2lf is %.2lf " % (num_one, num_two, difference))
 print("The product of %.2lf and %.2lf is %.2lf " % (num_one, num_two, product))
