@@ -16,3 +16,5 @@ lifter["name"] = input("Please enter your name: ")
 print(lifter["name"])
 
 lifter["units"] = input("Please enter competition units: \"kilos\" or \"pounds\": ")
+print(lifter["units"])
+
