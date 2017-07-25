@@ -7,6 +7,7 @@ class Node:
     def __init__(self,key):
         self.rChild = None
         self.lChild = None
+        self.parent = None
         self.data = key
 	
 
