@@ -13,12 +13,15 @@ class Node(object):
 
 class BST(object):
     def __init__(self):
-         self.root = None
+        self.root = None
+        self.number_of_nodes = 0
 
     def insert(self, data):
         if self.root is None:
+            self.number_of_nodes += 1
             self.root = Node(data)
         else:
+            self.number_of_nodes += 1
             self.insert_node(data, self.root)
 
     def insert_node(self, data, current_node):
@@ -40,25 +43,38 @@ class BST(object):
         else:
             print("Error something is wrong!")
 
-    def inOrder(self, current_node):
+
+    def print_inOrder(self, current_node):
         if current_node is not None:
-            self.inOrder(current_node.left_child)
+            self.print_inOrder(current_node.left_child)
             print(current_node.get_node_data())
-            self.inOrder(current_node.right_child)
+            self.print_inOrder(current_node.right_child)
 
-    def preOrder(self, current_node):
+    def print_preOrder(self, current_node):
         if current_node is not None:
             print(current_node.get_node_data())
-            self.preOrder(current_node.left_child)
-            self.preOrder(current_node.right_child)
+            self.print_preOrder(current_node.left_child)
+            self.print_preOrder(current_node.right_child)
 
-    def postOrder(self, current_node):
+    def print_postOrder(self, current_node):
         if current_node is not None:
-            self.postOrder(current_node.left_child)
-            self.postOrder(current_node.right_child)
+            self.print_postOrder(current_node.left_child)
+            self.print_postOrder(current_node.right_child)
             print(current_node.get_node_data())
 
+    def number_of_nodes(self):
+        return self.number_of_nodes
 
+def main():
+    print("This is main.")
 
+    f = open("numbers.txt", "r")
+    tree = BST()
+    random_number =  f.readlines()
+
+    for number in random_number:
+        tree.insert(number)
+
+main()
 
    
