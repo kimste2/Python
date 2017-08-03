@@ -66,19 +66,28 @@ class BST(object):
         return self.number_of_nodes
 
     def search_tree(self,current_node, item):
-        if item == current_node.data:
-            print("Found item")
-            return item
+        if current_node.left_child is None and current_node.right_child is None and item != current_node.data:
+            return "Not found in system!"
         elif item < current_node.data:
             print("Too small")
             return self.search_tree(current_node.left_child, item)
         elif item > current_node.data:
             print("Too big")
             return self.search_tree(current_node.right_child,item)
-        elif current_node.left_child is None and current_node.right_child is None and item != current_node.data :
-            return "Not found in system!"
+        elif item == current_node.data:
+            print("Found item")
+            return item
         else:
             return "Error"
+
+    def sum_data(self,current_node):
+        if(current_node is None):
+            return 0
+
+
+
+
+
 def main():
 
     print("This is main.")
@@ -89,7 +98,15 @@ def main():
         tree.insert(int(number))
     f.close()
 
-    
+    tree.print_inOrder(tree.root)
+    print("The root is " + str(tree.root.data))
+    x = tree.search_tree(tree.root, 11)
+    if x is None:
+        print("X is none.")
+    else:
+        print("Tree search for : " + str(x))
+    print(str(tree.sum_data(tree.root)))
+    print("The end")
 main()
 
    
