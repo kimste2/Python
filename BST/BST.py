@@ -47,12 +47,12 @@ class BST(object):
     def print_inOrder(self, current_node):
         if current_node is not None:
             self.print_inOrder(current_node.left_child)
-            print(current_node.get_node_data())
+            print(current_node.get_node_data(), end = ", ")
             self.print_inOrder(current_node.right_child)
 
     def print_preOrder(self, current_node):
         if current_node is not None:
-            print(current_node.get_node_data())
+            print(current_node.get_node_data(), end = ", ")
             self.print_preOrder(current_node.left_child)
             self.print_preOrder(current_node.right_child)
 
@@ -65,16 +65,31 @@ class BST(object):
     def number_of_nodes(self):
         return self.number_of_nodes
 
+    def search_tree(self,current_node, item):
+        if item == current_node.data:
+            print("Found item")
+            return item
+        elif item < current_node.data:
+            print("Too small")
+            return self.search_tree(current_node.left_child, item)
+        elif item > current_node.data:
+            print("Too big")
+            return self.search_tree(current_node.right_child,item)
+        elif current_node.left_child is None and current_node.right_child is None and item != current_node.data :
+            return "Not found in system!"
+        else:
+            return "Error"
 def main():
-    print("This is main.")
 
+    print("This is main.")
     f = open("numbers.txt", "r")
     tree = BST()
-    random_number =  f.readlines()
-
+    random_number = f.readlines()
     for number in random_number:
-        tree.insert(number)
+        tree.insert(int(number))
+    f.close()
 
+    
 main()
 
    
